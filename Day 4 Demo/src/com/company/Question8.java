@@ -1,11 +1,13 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
-Write a Java program to retrieve an element (at a specified index) from a given array list
+Write a Java program to sort a given array list
+
  */
-public class Demo18 {
+public class Question8 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -16,6 +18,7 @@ public class Demo18 {
         arrayList.add(354);
         System.out.println(arrayList);
 
-        System.out.println(arrayList.get(3));
+        Collections.sort(arrayList);
+        System.out.println(arrayList);
     }
 }

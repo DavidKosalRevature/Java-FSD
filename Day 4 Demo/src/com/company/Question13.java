@@ -1,12 +1,13 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /*
-Write a Java program to copy one array list into another
+Write a Java program of swap two elements in an array list
 
  */
-public class Demo23 {
+public class Question13 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -17,12 +18,7 @@ public class Demo23 {
         arrayList.add(354);
         System.out.println(arrayList);
 
-        ArrayList<Integer> arrayList2 = new ArrayList<>();
-        arrayList2.add(43);
-        arrayList2.add(97);
-        System.out.println(arrayList2);
-
-        arrayList2.addAll(arrayList);
-        System.out.println(arrayList2);
+        Collections.swap(arrayList,0,4);
+        System.out.println(arrayList);
     }
 }

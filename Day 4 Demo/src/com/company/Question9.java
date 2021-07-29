@@ -3,10 +3,10 @@ package com.company;
 import java.util.ArrayList;
 
 /*
-Write a Java program to remove the third element from a array list
+Write a Java program to copy one array list into another
 
  */
-public class Demo20 {
+public class Question9 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -17,7 +17,12 @@ public class Demo20 {
         arrayList.add(354);
         System.out.println(arrayList);
 
-        arrayList.remove(2);
-        System.out.println(arrayList);
+        ArrayList<Integer> arrayList2 = new ArrayList<>();
+        arrayList2.add(43);
+        arrayList2.add(97);
+        System.out.println(arrayList2);
+
+        arrayList2.addAll(arrayList);
+        System.out.println(arrayList2);
     }
 }

@@ -3,10 +3,9 @@ package com.company;
 import java.util.ArrayList;
 
 /*
- Write a Java program to search an element in a array list
-
+Write a Java program to retrieve an element (at a specified index) from a given array list
  */
-public class Demo21 {
+public class Question4 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -17,6 +16,6 @@ public class Demo21 {
         arrayList.add(354);
         System.out.println(arrayList);
 
-        System.out.println(arrayList.contains(74));
+        System.out.println(arrayList.get(3));
     }
 }

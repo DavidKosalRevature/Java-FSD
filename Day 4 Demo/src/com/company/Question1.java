@@ -6,7 +6,7 @@ Write a Java program to create a new array list, add some colors (string) and pr
 
 import java.util.ArrayList;
 
-public class Demo15 {
+public class Question1 {
     public static void main(String[] args) {
         ArrayList<String> arrayList = new ArrayList<>();
 

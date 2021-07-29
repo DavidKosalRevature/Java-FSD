@@ -3,10 +3,10 @@ package com.company;
 import java.util.ArrayList;
 
 /*
-Write a Java program to update specific array element by given element
+ Write a Java program to search an element in a array list
 
  */
-public class Demo19 {
+public class Question7 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -17,7 +17,6 @@ public class Demo19 {
         arrayList.add(354);
         System.out.println(arrayList);
 
-        arrayList.set(2, 1);
-        System.out.println(arrayList);
+        System.out.println(arrayList.contains(74));
     }
 }

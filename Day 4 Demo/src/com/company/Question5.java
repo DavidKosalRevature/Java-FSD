@@ -1,13 +1,12 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /*
-Write a Java program to sort a given array list
+Write a Java program to update specific array element by given element
 
  */
-public class Demo22 {
+public class Question5 {
     public static void main(String[] args) {
         ArrayList<Integer> arrayList = new ArrayList<>();
 
@@ -18,7 +17,7 @@ public class Demo22 {
         arrayList.add(354);
         System.out.println(arrayList);
 
-        Collections.sort(arrayList);
+        arrayList.set(2, 1);
         System.out.println(arrayList);
     }
 }
