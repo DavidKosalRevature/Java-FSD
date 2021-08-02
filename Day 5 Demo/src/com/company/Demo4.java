@@ -19,6 +19,9 @@ public class Demo4 {
         TestCallRun t1 = new TestCallRun();
         TestCallRun t2 = new TestCallRun();
 
+//        t1.start();
+//        t2.start();
+
         t1.run();
         t2.run();
     }

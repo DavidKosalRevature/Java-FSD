@@ -16,6 +16,9 @@ public class Question9 {
         arrayList.add(74);
         arrayList.add(354);
         System.out.println(arrayList);
+        System.out.println(arrayList.size());
+        arrayList.add(26);
+        System.out.println(arrayList.get(5));
 
         ArrayList<Integer> arrayList2 = new ArrayList<>();
         arrayList2.add(43);
@@ -23,6 +26,12 @@ public class Question9 {
         System.out.println(arrayList2);
 
         arrayList2.addAll(arrayList);
+        System.out.println(arrayList);
         System.out.println(arrayList2);
+
+        int[] array = {1,2,4};
+
+        System.out.println(array.length);
+
     }
 }
