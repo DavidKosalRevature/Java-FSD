@@ -1,9 +1,7 @@
 package com.company;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAOImpl implements EmployeeDAO{
@@ -34,7 +32,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
     @Override
     public void updateEmployee(Employee employee) throws SQLException {
-        String sql = "update employee set name = ?, email = ?, where id = ?";
+        String sql = "update employee set name = ?, email = ? where id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1,employee.getName());
         preparedStatement.setString(2, employee.getEmail());
@@ -60,12 +58,37 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     }
 
     @Override
-    public List<Employee> getEmployees() {
-        return null;
+    public List<Employee> getEmployees() throws SQLException {
+        List<Employee> list = new ArrayList<>();
+        String sql = "select * from employee";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery(sql);
+
+        while(resultSet.next()){
+            Employee newEmployee = new Employee();
+            newEmployee.setId(resultSet.getInt(1));
+            newEmployee.setName(resultSet.getString(2));
+            newEmployee.setEmail(resultSet.getString(3));
+            list.add(newEmployee);
+        }
+
+
+        return list;
     }
 
     @Override
-    public Employee employeeById(int id) {
-        return null;
+    public Employee employeeById(int id) throws SQLException {
+        Employee employee = new Employee();
+        String sql = "select * from employee where id = " + String.valueOf(id);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery(sql);
+
+        if(resultSet.next()) {
+            employee.setId(resultSet.getInt(1));
+            employee.setName(resultSet.getString(2));
+            employee.setEmail(resultSet.getString(3));
+        }
+        return employee;
+
     }
 }
