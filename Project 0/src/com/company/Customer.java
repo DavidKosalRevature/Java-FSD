@@ -114,7 +114,15 @@ public class Customer {
 
     private void postMoney() {
         System.out.println("Please enter the account number you would like to send money to");
-        String bankAccount = scan.next();
+        int sendAccount = scan.nextInt();
+
+        System.out.println("Please enter your account ID that will send the transfer");
+        int customerAccount = scan.nextInt();
+
+        System.out.println("Please enter the amount you would like to send");
+        double amount = scan.nextDouble();
+
+
 
         //Find bank account
     }

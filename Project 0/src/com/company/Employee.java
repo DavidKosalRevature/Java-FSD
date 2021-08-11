@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Employee {
+    Customer customer;
     Scanner scan = new Scanner(System.in);
     String choice;
     User user;
-    UserDAO dao = EmployeeDAOFactory.getEmployeeDao();
+    UserDAO dao = CustomerDAOFactory.getCustomerDao();
     static List<Request> requestList = new ArrayList<>();
 
     public void employeeBankMenu(User user) throws SQLException {
@@ -24,13 +25,13 @@ public class Employee {
             choice = scan.next().toLowerCase();
 
             switch (choice) {
-                case "account request":
+                case "account":
                     accountRequest();
                     break;
-                case "view customer":
+                case "customer":
                     viewCustomer();
                     break;
-                case "view log":
+                case "log":
                     viewLog();
                     break;
                 case "logout":
@@ -54,8 +55,20 @@ public class Employee {
 
     }
 
-    private void viewCustomer() {
-        //not sure how to do yet
+    private void viewCustomer() throws SQLException {
+//        System.out.println("Enter the first name of the Customer");
+//        String firstName = scan.next();
+//
+//        System.out.println("Enter the last name of the Customer");
+//        String lastName = scan.next();
+        System.out.println("Here is a list of all customers");
+        dao.getUser();
+
+        System.out.println("Please choose the user account ID that you would like to view");
+        int accountID = scan.nextInt();
+
+        dao.customerAccount(accountID);
+
     }
 
     private void viewLog() {

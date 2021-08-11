@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDAOImpl implements UserDAO {
-    private static Statement statement = null;
     Connection connection = null;
 
     public CustomerDAOImpl() {
@@ -88,6 +87,20 @@ public class CustomerDAOImpl implements UserDAO {
     }
 
     @Override
+    public void customerAccount(int id) throws SQLException {
+        String sql = "select * from bankaccount where userId = " + id;
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()){
+            System.out.println("Bank Account Id: " + resultSet.getString("accountId") +
+                    ", " + resultSet.getString("accountType") + "= " +
+                    resultSet.getString("balance"));
+        }
+    }
+
+
+    @Override
     public void deposit(int id, double amount) throws SQLException{
         String sql =  "select * from bankaccount where accountId  = " + id;
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -140,7 +153,19 @@ public class CustomerDAOImpl implements UserDAO {
             System.out.println("You cannot withdraw more than what is available in your account");
         }
 
+    }
 
+    public void sendTransfer(int sendId, int receiveId, double amount) throws SQLException {
+        String sql = "insert into transfer (sendId, receivedId, amount) values (?,?,?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,sendId);
+        preparedStatement.setInt(2,receiveId);
+        preparedStatement.setDouble(3,amount);
+        int count = preparedStatement.executeUpdate();
+        if(count > 0)
+            System.out.println("Your transfer has been sent");
+        else
+            System.out.println("something went wrong");
 
     }
 
@@ -173,25 +198,20 @@ public class CustomerDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getUser() throws SQLException {
-        List<User> list = new ArrayList<>();
-        String sql = "select * from user";
+    public void getUser() throws SQLException {
+        String sql = "select * from user where accountType = \"customer\"";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        ResultSet resultSet = preparedStatement.executeQuery(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()){
-            User newUser = new User();
-            newUser.setId(resultSet.getInt(1));
-            newUser.setFirstName(resultSet.getString(2));
-            newUser.setLastName(resultSet.getString(3));
-            newUser.setEmail(resultSet.getString(4));
-            newUser.setUsername(resultSet.getString(5));
-            newUser.setPassword(resultSet.getString(6));
-            list.add(newUser);
+            System.out.println("Account Id: " + resultSet.getInt("id"));
+            System.out.println(resultSet.getString("firstName"));
+            System.out.println(resultSet.getString("lastName"));
+            System.out.println(resultSet.getString("email"));
+            System.out.println();
+
         }
 
-
-        return list;
     }
 
     @Override

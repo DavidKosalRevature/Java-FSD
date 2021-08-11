@@ -67,6 +67,11 @@ public class EmployeeDAOImpl implements UserDAO {
     }
 
     @Override
+    public void customerAccount(int id) throws SQLException {
+
+    }
+
+    @Override
     public void deposit(int id, double amount) throws SQLException {
 
     }
@@ -105,7 +110,7 @@ public class EmployeeDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getUser() throws SQLException {
+    public void getUser() throws SQLException {
         List<User> list = new ArrayList<>();
         String sql = "select * from employee";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -122,8 +127,6 @@ public class EmployeeDAOImpl implements UserDAO {
             list.add(newUser);
         }
 
-
-        return list;
     }
 
     @Override
