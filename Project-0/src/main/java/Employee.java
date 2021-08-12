@@ -11,11 +11,11 @@ public class Employee {
     String choice;
     User user;
     UserDAO dao = UserDAOFactory.getUserDao();
-    private static final Logger logger = LogManager.getLogger(Employee.class);
+    //private static final Logger logger = LogManager.getLogger(Employee.class);
 
     public void employeeBankMenu(User user) throws SQLException {
         this.user = user;
-        System.out.println("Current user logged in: " + user.getUsername() +"\n");
+        System.out.println("Current user logged in: " + user.getUsername() + "\n");
 
         do {
             System.out.println("Please choose a bank option\n");
@@ -48,7 +48,7 @@ public class Employee {
 
     private void accountRequest() throws SQLException {
         System.out.println("Here is a list of pending account requests");
-        if(dao.viewRequest()) {
+        if (dao.viewRequest()) {
 
             System.out.println("Would you like to approve any request?");
             System.out.println("Enter yes to accept");
@@ -60,7 +60,7 @@ public class Employee {
             }
         }
 
-        logger.info("Approved or Rejected Account Request");
+        //logger.info("Approved or Rejected Account Request");
 
 
     }
@@ -73,12 +73,13 @@ public class Employee {
         int accountID = scan.nextInt();
 
         dao.customerAccount(accountID);
-        logger.info("viewed customer account info");
+        //logger.info("viewed customer account info");
 
     }
 
     private void viewLog() {
-        PropertyConfigurator.configure("src/log4j.properties");
+
+        //PropertyConfigurator.configure("src/log4j.properties");
     }
 
     private void logout() throws SQLException {

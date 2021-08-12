@@ -88,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        if(resultSet.next()){
+        if (resultSet.next()) {
             String accountType = resultSet.getString("accountType");
             int customerId = resultSet.getInt("customerId");
             double amount = resultSet.getDouble("amount");
@@ -96,9 +96,9 @@ public class UserDAOImpl implements UserDAO {
 
             String sql2 = "insert into bankaccount (customerId, accountType, balance) values (?,?,?)";
             PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
-            preparedStatement2.setInt(1,customerId);
-            preparedStatement2.setString(2,accountType);
-            preparedStatement2.setDouble(3,amount);
+            preparedStatement2.setInt(1, customerId);
+            preparedStatement2.setString(2, accountType);
+            preparedStatement2.setDouble(3, amount);
             int count = preparedStatement2.executeUpdate();
             if (count > 0) {
                 System.out.println("You have approved a bank account\n");
@@ -109,8 +109,7 @@ public class UserDAOImpl implements UserDAO {
                     System.out.println("The account request has been removed from the table");
                 else
                     System.out.println("something went wrong");
-            }
-            else
+            } else
                 System.out.println("something went wrong");
         }
 
@@ -214,9 +213,10 @@ public class UserDAOImpl implements UserDAO {
                 } else
                     System.out.println("something went wrong");
 
+            }else {
+                System.out.println("You cannot withdraw more than what is available in your account\n");
             }
-        } else {
-            System.out.println("You cannot withdraw more than what is available in your account\n");
+
         }
 
     }

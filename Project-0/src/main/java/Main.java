@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        BasicConfigurator.configure();
+        //BasicConfigurator.configure();
         Account account = new Account();
 
         account.loginMenu();

@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Account {
     Scanner scan = new Scanner(System.in);
     UserDAO userDao = UserDAOFactory.getUserDao();
-    private static final Logger logger = LogManager.getLogger(Account.class);
+    //private static final Logger logger = LogManager.getLogger(Account.class);
 
 
     public void loginMenu() throws SQLException {
@@ -58,11 +58,10 @@ public class Account {
 
             if (Objects.equals(user.getAccountType(), "customer")) {
                 customer.customerBankMenu(user);
-                logger.info(username + "has logged on");
-            }
-            else {
+                //logger.info(username + "has logged on");
+            } else {
                 employee.employeeBankMenu(user);
-                logger.info(username + "has logged on");
+                //logger.info(username + "has logged on");
             }
         }
 
@@ -102,12 +101,11 @@ public class Account {
         System.out.println("Please enter your password: ");
         String password = scan.next();
         user.setPassword(password);
-        
+
         user.setAccountType(accountType);
         userDao.addUser(user);
-        logger.info("An account has been registered");
+        //logger.info("An account has been registered");
 
-        
 
     }
 

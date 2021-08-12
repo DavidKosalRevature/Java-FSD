@@ -9,14 +9,14 @@ public class Customer {
     String choice;
     UserDAO dao = UserDAOFactory.getUserDao();
     User user;
-    private static final Logger logger = LogManager.getLogger(Customer.class);
+    //private static final Logger logger = LogManager.getLogger(Customer.class);
 
 
     public void customerBankMenu(User user) throws SQLException {
         this.user = user;
         System.out.println("Current user logged in: " + user.getUsername() + "\n");
 
-        do{
+        do {
             System.out.println("Please choose a bank option\n");
             System.out.println("apply:\t Apply for a new bank account");
             System.out.println("view:\t View Account Balance");
@@ -28,7 +28,7 @@ public class Customer {
 
             choice = scan.next().toLowerCase();
 
-            switch (choice){
+            switch (choice) {
                 case "apply":
                     apply(user);
                     break;
@@ -55,7 +55,7 @@ public class Customer {
                     customerBankMenu(user);
                     break;
             }
-        } while(!choice.equals("logout"));
+        } while (!choice.equals("logout"));
     }
 
     private void apply(User user) throws SQLException {
@@ -68,14 +68,14 @@ public class Customer {
         System.out.println("Please Enter starting balance");
         double startingAmount = scan.nextDouble();
 
-        dao.requestAccount(user.getId(),bankAccount,startingAmount);
-        logger.info("Customer has applied for a bank account");
+        dao.requestAccount(user.getId(), bankAccount, startingAmount);
+        //logger.info("Customer has applied for a bank account");
     }
 
     private void view(User user) throws SQLException {
         System.out.println("Here are all your accounts");
         dao.customerAccount(user);
-        logger.info("account viewed");
+        //logger.info("account viewed");
     }
 
     private void deposit(User user) throws SQLException {
@@ -88,7 +88,7 @@ public class Customer {
         double amount = scan.nextDouble();
 
         dao.deposit(bankAccount, amount);
-        logger.info("deposited " + amount + " into " + bankAccount);
+        //logger.info("deposited " + amount + " into " + bankAccount);
     }
 
     private void withdraw(User user) throws SQLException {
@@ -101,7 +101,7 @@ public class Customer {
         double amount = scan.nextDouble();
 
         dao.withdraw(bankAccount, amount);
-        logger.info("withdrew " + amount + " from " + bankAccount);
+        //logger.info("withdrew " + amount + " from " + bankAccount);
     }
 
     private void postMoney(User user) throws SQLException {
@@ -116,15 +116,15 @@ public class Customer {
         double amount = scan.nextDouble();
 
         dao.sendTransfer(sendAccount, customerAccount, amount);
-        dao.withdraw(customerAccount,amount);
-        logger.info("post money transfer");
+        dao.withdraw(customerAccount, amount);
+        //logger.info("post money transfer");
 
     }
 
     private void acceptMoneyTransfer(User user) throws SQLException {
         System.out.println("Here are your pending money transfer");
 
-        if(dao.viewTransfer(user.getId())) {
+        if (dao.viewTransfer(user.getId())) {
 
             System.out.println("Would you like to accept any transfer?");
             System.out.println("Enter yes to accept");
@@ -137,7 +137,7 @@ public class Customer {
             }
         }
 
-        logger.info("accepted money transfer");
+        //logger.info("accepted money transfer");
     }
 
     private void logout() throws SQLException {
