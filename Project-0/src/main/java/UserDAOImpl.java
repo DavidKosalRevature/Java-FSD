@@ -60,18 +60,61 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void viewRequest() throws SQLException {
-        String sql = "select * from request";
+    public boolean viewRequest() throws SQLException {
+        String sql = "call getAllRequests()";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        while(resultSet.next()){
-            System.out.println("Request ID: " + resultSet.getInt("requestId"));
-            System.out.println("Account Type: " + resultSet.getString("AccountType"));
-            System.out.println("Customer ID: " + resultSet.getInt("customerId"));
-            System.out.println("Starting balance: " + resultSet.getDouble("amount"));
-            System.out.println();
+        if (!resultSet.next()) {
+            System.out.println("There are no pending transfers\n");
+            return false;
+        } else {
+            do {
+                System.out.println("Request ID: " + resultSet.getInt("requestId"));
+                System.out.println("Account Type: " + resultSet.getString("AccountType"));
+                System.out.println("Customer ID: " + resultSet.getInt("customerId"));
+                System.out.println("Starting balance: " + resultSet.getDouble("amount"));
+                System.out.println();
+            } while (resultSet.next());
+
+            return true;
         }
+
+    }
+
+    @Override
+    public void acceptRequest(int requestId) throws SQLException {
+        String sql = "select * from request where requestId = " + requestId;
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            String accountType = resultSet.getString("accountType");
+            int customerId = resultSet.getInt("customerId");
+            double amount = resultSet.getDouble("amount");
+            System.out.println(accountType + " " + customerId + " " + amount);
+
+            String sql2 = "insert into bankaccount (customerId, accountType, balance) values (?,?,?)";
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+            preparedStatement2.setInt(1,customerId);
+            preparedStatement2.setString(2,accountType);
+            preparedStatement2.setDouble(3,amount);
+            int count = preparedStatement2.executeUpdate();
+            if (count > 0) {
+                System.out.println("You have approved a bank account\n");
+                String sql3 = "delete from request where requestId = " + requestId;
+                PreparedStatement preparedStatement3 = connection.prepareStatement(sql3);
+                int count2 = preparedStatement3.executeUpdate();
+                if (count2 > 0)
+                    System.out.println("The account request has been removed from the table");
+                else
+                    System.out.println("something went wrong");
+            }
+            else
+                System.out.println("something went wrong");
+        }
+
+
     }
 
 
@@ -120,7 +163,7 @@ public class UserDAOImpl implements UserDAO {
         while (resultSet.next()) {
             System.out.println("Bank Account Id: " + resultSet.getString("accountId") +
                     ", " + resultSet.getString("accountType") + "= " +
-                    resultSet.getString("balance\n"));
+                    resultSet.getString("balance") + "\n");
         }
     }
 
@@ -257,7 +300,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void getUser() throws SQLException {
-        String sql = "select * from user where accountType = \"customer\"";
+        String sql = "call getAllUsers()";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
 

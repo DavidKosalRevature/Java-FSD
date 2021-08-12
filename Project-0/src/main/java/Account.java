@@ -1,19 +1,24 @@
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Account {
     Scanner scan = new Scanner(System.in);
-    UserDAO customerDAO = UserDAOFactory.getUserDao();
+    UserDAO userDao = UserDAOFactory.getUserDao();
+    private static final Logger logger = LogManager.getLogger(Account.class);
+
 
     public void loginMenu() throws SQLException {
 
         String choice;
         do {
             System.out.println("What would you like to do?");
-            System.out.println("1. Login");
-            System.out.println("2. Register");
-            System.out.println("3. Exit");
+            System.out.println("Login");
+            System.out.println("Register");
+            System.out.println("Exit");
 
             choice = scan.next().toLowerCase();
 
@@ -36,6 +41,8 @@ public class Account {
     }
 
     private void login() throws SQLException {
+
+
         Customer customer = new Customer();
         Employee employee = new Employee();
 
@@ -45,14 +52,18 @@ public class Account {
         System.out.println("Please enter your password: ");
         String password = scan.next();
 
-        if (customerDAO.checkLogin(username, password)) {
+        if (userDao.checkLogin(username, password)) {
             User user = new User();
-            user = customerDAO.userByUsername(username);
+            user = userDao.userByUsername(username);
 
-            if (Objects.equals(user.getAccountType(), "customer"))
+            if (Objects.equals(user.getAccountType(), "customer")) {
                 customer.customerBankMenu(user);
-            else
+                logger.info(username + "has logged on");
+            }
+            else {
                 employee.employeeBankMenu(user);
+                logger.info(username + "has logged on");
+            }
         }
 
     }
@@ -61,8 +72,8 @@ public class Account {
 
 
         System.out.println("Please choose an account type: ");
-        System.out.println("1. Customer");
-        System.out.println("2. Employee");
+        System.out.println("Customer");
+        System.out.println("Employee");
         String accountType = scan.next().toLowerCase();
 
         accountInput(accountType);
@@ -91,17 +102,12 @@ public class Account {
         System.out.println("Please enter your password: ");
         String password = scan.next();
         user.setPassword(password);
+        
+        user.setAccountType(accountType);
+        userDao.addUser(user);
+        logger.info("An account has been registered");
 
-        switch (accountType) {
-            case "customer":
-                user.setAccountType(accountType);
-                customerDAO.addUser(user);
-                break;
-            case "employee":
-                user.setAccountType(accountType);
-                customerDAO.addUser(user);
-                break;
-        }
+        
 
     }
 

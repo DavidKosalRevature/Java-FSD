@@ -1,6 +1,8 @@
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Employee {
@@ -9,16 +11,18 @@ public class Employee {
     String choice;
     User user;
     UserDAO dao = UserDAOFactory.getUserDao();
+    private static final Logger logger = LogManager.getLogger(Employee.class);
 
     public void employeeBankMenu(User user) throws SQLException {
         this.user = user;
+        System.out.println("Current user logged in: " + user.getUsername() +"\n");
 
         do {
-            System.out.println("Please choose a bank option");
-            System.out.println("1. Account Requests");
-            System.out.println("2. View Customer");
-            System.out.println("3. View Log");
-            System.out.println("4. Log out");
+            System.out.println("Please choose a bank option\n");
+            System.out.println("account:\t Approve or Reject Account Requests");
+            System.out.println("customer:\t View A Customer's Account");
+//            System.out.println("log:\t View A Log of All Transactions");
+            System.out.println("logout:\t Log out and go back to Account Menu");
 
             choice = scan.next().toLowerCase();
 
@@ -29,9 +33,9 @@ public class Employee {
                 case "customer":
                     viewCustomer();
                     break;
-                case "log":
-                    viewLog();
-                    break;
+//                case "log":
+//                    viewLog();
+//                    break;
                 case "logout":
                     logout();
                     break;
@@ -44,16 +48,19 @@ public class Employee {
 
     private void accountRequest() throws SQLException {
         System.out.println("Here is a list of pending account requests");
-        dao.viewRequest();
+        if(dao.viewRequest()) {
 
-        System.out.println("Would you like to approve any request?");
-        System.out.println("Enter yes to accept");
-        String accept = scan.next().toLowerCase();
-        if(accept.equals("yes")){
-            System.out.println("Enter the Account Request ID you would like to approve");
-            int requestId  = scan.nextInt();
-
+            System.out.println("Would you like to approve any request?");
+            System.out.println("Enter yes to accept");
+            String accept = scan.next().toLowerCase();
+            if (accept.equals("yes")) {
+                System.out.println("Enter the Account Request ID you would like to approve");
+                int requestId = scan.nextInt();
+                dao.acceptRequest(requestId);
+            }
         }
+
+        logger.info("Approved or Rejected Account Request");
 
 
     }
@@ -66,14 +73,16 @@ public class Employee {
         int accountID = scan.nextInt();
 
         dao.customerAccount(accountID);
+        logger.info("viewed customer account info");
 
     }
 
     private void viewLog() {
-        //no idea how to log lol
+        PropertyConfigurator.configure("src/log4j.properties");
     }
 
     private void logout() throws SQLException {
+        user = null;
         Account account = new Account();
         account.loginMenu();
     }

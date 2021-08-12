@@ -7,7 +7,9 @@ public interface UserDAO {
 
     void requestAccount(int customerId, String accountType, double amount) throws SQLException;
 
-    void viewRequest() throws SQLException;
+    boolean viewRequest() throws SQLException;
+
+    void acceptRequest(int requestId) throws SQLException;
 
     boolean checkLogin(String username, String password) throws SQLException;
 
