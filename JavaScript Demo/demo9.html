@@ -47,8 +47,12 @@
             var password = document.userForm.password.value;
             var cpassword = document.userForm.cpassword.value;
 
-            document.getElementById('text').innerHTML = 'Welcome ' + name +
-            ', ' + email + '@mail.com'
+            if(password == cpassword ){
+                alert("Registration Successful")
+            }
+
+            // document.getElementById('text').innerHTML = 'Welcome ' + name +
+            // ', ' + email + '@mail.com'
 
         }
     </script>
