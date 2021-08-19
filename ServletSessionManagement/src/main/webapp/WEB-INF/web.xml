@@ -22,6 +22,15 @@
 	<servlet-name>Servlet4</servlet-name>
 	<servlet-class>com.david.Servlet4</servlet-class>
 </servlet>
+<servlet>
+	<servlet-name>Servlet5</servlet-name>
+	<servlet-class>com.david.Servlet5</servlet-class>
+</servlet>
+
+<servlet>
+	<servlet-name>Servlet6</servlet-name>
+	<servlet-class>com.david.Servlet6</servlet-class>
+</servlet>
 
 
 
@@ -44,6 +53,14 @@
 <servlet-mapping>
 	<servlet-name>Servlet4</servlet-name>
 	<url-pattern>/Servlet4</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>Servlet5</servlet-name>
+	<url-pattern>/Servlet5</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name>Servlet6</servlet-name>
+	<url-pattern>/Servlet6</url-pattern>
 </servlet-mapping>
 
 

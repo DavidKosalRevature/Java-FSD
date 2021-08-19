@@ -9,7 +9,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 public class LoginServlet extends HttpServlet{
 	
@@ -26,11 +25,8 @@ public class LoginServlet extends HttpServlet{
 			out.println("You are successfully logged in!");
 			out.println("<br>Welcome " + username);
 			
-			String name = request.getParameter("name");
-			out.println("Welcome " + name);
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("uname", name);
+			Cookie cookie = new Cookie("username", username);
+			response.addCookie(cookie);
 			
 		} else {
 			out.println("Invalid details");
