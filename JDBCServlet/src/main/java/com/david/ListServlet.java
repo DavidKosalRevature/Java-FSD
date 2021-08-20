@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class ListServlet extends HttpServlet{
 
@@ -48,8 +49,10 @@ public class ListServlet extends HttpServlet{
 				out.println("<td>" + email + "</td>");
 				out.println("<td>" + gender + "</td>");
 				out.println("<td>" + country + "</td>");
-				out.println("<td><a href='edit?id=" + id + "'/>Edit Employee</a></td>");
+				out.println("<td><a href='edit.html'/>Edit Employee</a></td>");
 				out.println("<td><a href='delete?id=" + id + "'/>Delete Employee</a></td></tr>");
+				
+				
 				
 			}
 			

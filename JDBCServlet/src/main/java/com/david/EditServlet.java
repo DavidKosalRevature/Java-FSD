@@ -12,23 +12,34 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class EditServlet extends HttpServlet{
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		EmployeeDAO dao = EmployeeDAOFactory.getEmployeeDao();
-		Employee employee = new Employee();
+		
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("edit.html");
-		rd.forward(request, response);
+		
 
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		out.println("<h1>employee id = " + id + "</h1>");
-		employee.setId(id);
+		Employee employee;
+		try {
+			employee = dao.employeeById(id);
+			request.setAttribute("name", employee.getName());
+			request.setAttribute("email", employee.getEmail());
+			request.setAttribute("gender", employee.getGender());
+			request.setAttribute("country", employee.getCountry());
+			RequestDispatcher rd = request.getRequestDispatcher("edit.html");
+			rd.forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		RequestDispatcher rd2 = request.getRequestDispatcher("editsuccess");
-		rd2.forward(request, response);
+		RequestDispatcher rd2 = request.getRequestDispatcher("success");
+		rd2.include(request, response);
 		
 		out.close();
 		
