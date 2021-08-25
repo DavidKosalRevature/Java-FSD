@@ -3,11 +3,11 @@ class Student{
     private name: string;
     private passMark = 40;
 
-    getId(){
+    get Id(){
         return this.id;
     }
 
-    setId(value){
+    set Id(value){
         if(value < 0)
             throw new Error('id can not be negative')
         this.id = value;
@@ -15,6 +15,6 @@ class Student{
 }
 
 let student = new Student();
-student.setId(50)
+student.Id = 50;
 
-console.log(student.getId())
+console.log(student)
