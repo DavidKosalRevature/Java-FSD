@@ -6,6 +6,9 @@ import { TestComponent } from './test/test.component';
 import { PropertyComponent } from './property/property.component';
 import { DataBindingComponent } from './data-binding/data-binding.component';
 import { ClassBindingComponent } from './class-binding/class-binding.component';
+import { NgIfComponent } from './ng-if/ng-if.component';
+import { NgSwitchComponent } from './ng-switch/ng-switch.component';
+import { NgForComponent } from './ng-for/ng-for.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { ClassBindingComponent } from './class-binding/class-binding.component';
     TestComponent,
     PropertyComponent,
     DataBindingComponent,
-    ClassBindingComponent
+    ClassBindingComponent,
+    NgIfComponent,
+    NgSwitchComponent,
+    NgForComponent
   ],
   imports: [
     BrowserModule
