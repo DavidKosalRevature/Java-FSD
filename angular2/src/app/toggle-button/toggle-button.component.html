@@ -1,0 +1,26 @@
+<button class="btn btn-primary" (click)="onButtonClicked()">Add Table</button>
+<br>
+
+<table class="table table-bordered" *ngIf="flag">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>Email</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees; trackBy: trackById, even as e;"
+        [style.background]="e ? '#ccc' : '#fff'">
+            <td>{{employee.id}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.email}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+

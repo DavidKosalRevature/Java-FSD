@@ -9,6 +9,9 @@ import { ClassBindingComponent } from './class-binding/class-binding.component';
 import { NgIfComponent } from './ng-if/ng-if.component';
 import { NgSwitchComponent } from './ng-switch/ng-switch.component';
 import { NgForComponent } from './ng-for/ng-for.component';
+import { NgForTrackByComponent } from './ng-for-track-by/ng-for-track-by.component';
+import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { NgForComponent } from './ng-for/ng-for.component';
     ClassBindingComponent,
     NgIfComponent,
     NgSwitchComponent,
-    NgForComponent
+    NgForComponent,
+    NgForTrackByComponent,
+    ToggleButtonComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule
