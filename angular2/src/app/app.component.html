@@ -1,1 +1,5 @@
-<app-pipes></app-pipes>
+<div class="parent">
+<h1>App Component (Parent)</h1>
+{{message}}
+<app-input-output (childEvent)="message=$event" [childData]="parentData"></app-input-output>
+</div>

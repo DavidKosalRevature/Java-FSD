@@ -1,0 +1,7 @@
+.child{
+    width: 400px;
+    height: 200px;
+    padding: 20px;
+    background-color: grey;
+    border: 2px solid #000;
+}
