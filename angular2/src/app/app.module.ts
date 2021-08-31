@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import {TitlePipe} from './title.pipe';
@@ -11,6 +12,9 @@ import { ServicesEmployeeListComponent } from './services-employee-list/services
 import { ServicesEmployeeDetailComponent } from './services-employee-detail/services-employee-detail.component';
 import { PostComponent } from './post/post.component';
 import { PostPhotoGridComponent } from './post-photo-grid/post-photo-grid.component';
+import { DepartmentComponent } from './department/department.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { DepartmentDetailComponent } from './department-detail/department-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,15 @@ import { PostPhotoGridComponent } from './post-photo-grid/post-photo-grid.compon
     ServicesEmployeeListComponent,
     ServicesEmployeeDetailComponent,
     PostComponent,
-    PostPhotoGridComponent
+    PostPhotoGridComponent,
+    DepartmentComponent,
+    EmployeeComponent,
+    DepartmentDetailComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
