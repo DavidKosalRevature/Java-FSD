@@ -10,6 +10,7 @@ import { CounterDisplayComponent } from './counter-example/counter-display/count
 import { ServicesEmployeeListComponent } from './services-employee-list/services-employee-list.component';
 import { ServicesEmployeeDetailComponent } from './services-employee-detail/services-employee-detail.component';
 import { PostComponent } from './post/post.component';
+import { PostPhotoGridComponent } from './post-photo-grid/post-photo-grid.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostComponent } from './post/post.component';
     CounterDisplayComponent,
     ServicesEmployeeListComponent,
     ServicesEmployeeDetailComponent,
-    PostComponent
+    PostComponent,
+    PostPhotoGridComponent
   ],
   imports: [
     BrowserModule,

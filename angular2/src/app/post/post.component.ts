@@ -11,7 +11,7 @@ export class PostComponent implements OnInit {
   public posts: any[] =[];
 
   constructor(private httpService: HttpService) {
-    this.httpService.getPosts().subscribe(http => this.posts = http)
+    this.httpService.getPosts().subscribe(data => this.posts = data)
    }
 
   ngOnInit(): void {

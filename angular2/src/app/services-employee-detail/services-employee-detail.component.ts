@@ -4,7 +4,8 @@ import { DataService } from '../data.service';
 @Component({
   selector: 'app-services-employee-detail',
   templateUrl: './services-employee-detail.component.html',
-  styleUrls: ['./services-employee-detail.component.css']
+  styleUrls: ['./services-employee-detail.component.css'],
+  providers: [DataService]
 })
 export class ServicesEmployeeDetailComponent implements OnInit {
 
