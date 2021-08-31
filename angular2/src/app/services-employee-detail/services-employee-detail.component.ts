@@ -10,9 +10,9 @@ export class ServicesEmployeeDetailComponent implements OnInit {
 
   employees: any[] = [];
 
-  constructor(private dataService: DataService) { 
-    this.employees = dataService.getEmployees();
-  }
+  // constructor(private dataService: DataService) { 
+  //   this.employees = dataService.getEmployees();
+  // }
 
   ngOnInit(): void {
   }
