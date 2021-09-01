@@ -25,12 +25,12 @@ public class App {
 		SessionFactory factory = cfg.buildSessionFactory();
 
 		// create employee
-//        Employee employee = new Employee();
-//        employee.setId(1);
-//        employee.setName("Mark");
-//        employee.setEmail("mark@gmail.com");
-//        
-//        System.out.println(employee.toString());
+        Employee employee = new Employee();
+        employee.setId(1);
+        employee.setName("Mark");
+        employee.setEmail("mark@gmail.com");
+        
+        System.out.println(employee.toString());
 
 		// create address
 //		Address address = new Address();
@@ -52,16 +52,16 @@ public class App {
 		// Begin the transaction
 		Transaction transaction = session.beginTransaction();
 		// save the employee
-		//session.save(employee);
+		session.save(employee);
 //		session.save(address);
 //		session.save(address2);
 		
 		//Fetch the data
-		Address fetch = session.get(Address.class, 1);
-		System.out.println(fetch);
-
-		Address fetch2 = session.get(Address.class, 2);
-		System.out.println(fetch2);
+//		Address fetch = session.get(Address.class, 1);
+//		System.out.println(fetch);
+//
+//		Address fetch2 = session.get(Address.class, 2);
+//		System.out.println(fetch2);
 		
 		
 		// commit the transaction
