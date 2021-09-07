@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Project-1</display-name>
+  
+  
   <servlet>
-    <servlet-name>ServletDemo</servlet-name>
-    <servlet-class>com.david.ServletDemo</servlet-class>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>com.david.RegisterServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletDemo</servlet-name>
-    <url-pattern>/servlet</url-pattern>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.david.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AddTicketServlet</servlet-name>
+    <servlet-class>com.david.AddTicketServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddTicketServlet</servlet-name>
+    <url-pattern>/addTicket</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ViewServlet</servlet-name>
+    <servlet-class>com.david.ViewServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewServlet</servlet-name>
+    <url-pattern>/view</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ViewAllServlet</servlet-name>
+    <servlet-class>com.david.ViewAllServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewAllServlet</servlet-name>
+    <url-pattern>/viewAll</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>

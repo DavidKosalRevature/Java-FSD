@@ -12,8 +12,11 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
     private String employeeName;
-    private int salary;
-    public int getEmployeeId() {
+    private String email;
+    private String password;
+    private String type;
+    
+	public int getEmployeeId() {
         return employeeId;
     }
     public void setEmployeeId(int employeeId) {
@@ -25,11 +28,25 @@ public class Employee {
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
-    public int getSalary() {
-        return salary;
-    }
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+    
  
 }
