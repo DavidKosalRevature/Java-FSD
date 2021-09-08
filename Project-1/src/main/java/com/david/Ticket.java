@@ -1,12 +1,11 @@
 package com.david;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "Ticket")
 public class Ticket {
@@ -20,6 +19,9 @@ public class Ticket {
 	private String status;
 	private String descr;
 	private String timestamp;
+	
+	@ManyToOne
+	private Employee employee;
 
 	public int getId() {
 		return id;
@@ -76,6 +78,16 @@ public class Ticket {
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	
+	
 	
 	
 }

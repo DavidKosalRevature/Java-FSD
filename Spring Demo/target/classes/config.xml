@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/p ">
+    <!-- First Bean   -->
+    <bean class="com.revature.Student" name="student1">
+        <property name="studentId">
+            <value>100</value>
+        </property>
+        <property name="studentName">
+            <value>Mark Smith</value>
+        </property>
+        <property name="studentAddress">
+            <value>USA</value>
+        </property>
+    </bean>
+
+    <!-- Second Bean using value attribute   -->
+    <bean class="com.revature.Student" name="student2">
+        <property name="studentId" value="200"/>
+        <property name="studentName" value="Paul"/>
+        <property name="studentAddress" value="UK"/>
+    </bean>
+
+    <!-- Third Bean using p schema  -->
+
+    <bean class="com.revature.Student" name="student3" p:studentId="300" p:studentName="Watson" p:studentAddress="UAE"/>
+
+    <bean class="com.revature.Employee" name="employee1">
+        <property name="name" value="Mark"/>
+        <property name="phones">
+            <list>
+                <value>9999</value>
+                <value>8888</value>
+                <value>7777</value>
+            </list>
+        </property>
+
+        <property name="addresses">
+            <set>
+                <value>USA</value>
+                <value>UK</value>
+                <value>UAE</value>
+            </set>
+        </property>
+
+        <property name="departments">
+            <map>
+                <entry key="admin" value="usa" />
+                <entry key="sales" value="uk" />
+                <entry key="purchase" value="uae" />
+            </map>
+        </property>
+    </bean>
+
+
+</beans>
+

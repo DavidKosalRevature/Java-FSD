@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/p ">
+    <!-- First Bean   -->
+
+    <!--  first example  -->
+    <bean class="com.revature.Employee" name="employee1">
+        <constructor-arg value="100"/>
+        <constructor-arg value="Mark"/>
+        <constructor-arg value="m@gmail.com"/>
+    </bean>
+
+    <!--  second example with ref -->
+    <bean class="com.revature.Address" name="address1">
+            <constructor-arg value="city 1"/>
+            <constructor-arg value="country 1"/>
+    </bean>
+
+    <bean class="com.revature.Customer" name="customer1">
+        <constructor-arg value="101"/>
+        <constructor-arg value="Mark"/>
+        <constructor-arg ref="address1"/>
+    </bean>
+
+    <!--  second example with ambiguity problem -->
+    <!--  type means the data type of the constructor argument -->
+    <!--  index means the order of the value assign to constructor argument a=200, b=100 -->
+    <bean class="com.revature.Calculation" name="calculation1">
+        <constructor-arg value="100" type="int" index="1"/>
+        <constructor-arg value="200" type="int" index="0"/>
+    </bean>
+
+</beans>
+

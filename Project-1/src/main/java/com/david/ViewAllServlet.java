@@ -25,8 +25,9 @@ public class ViewAllServlet extends HttpServlet{
 		out.println("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css\" integrity=\"sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l\" crossorigin=\"anonymous\">\r\n");
 		out.println("</Head>");
 		out.println("<Body>");
+		out.println("<div class=\"container p-3 my-3 border\">");
 		out.println("<h1>Ticket List</h1>");
-		out.println("<table border=1 width=50% height=50%>"); 
+		out.println("<table class=\"table table-striped\">"); 
 		out.println("<tr><th>Id</th>");
 		out.println("<th>Name</th>");
 		out.println("<th>Amount</th>");
@@ -57,6 +58,7 @@ public class ViewAllServlet extends HttpServlet{
 		out.println("</table>");
 		out.println("<br>");
 		out.println("<a class=\"btn btn-primary\" href=\"ManagerMenu.html\" role=\"button\"><h5>Manager Menu</h5></a>");
+		out.println("</div>");
 		out.println("</body>");
 		out.println("</html>");
 		

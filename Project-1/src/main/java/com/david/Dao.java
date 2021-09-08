@@ -69,7 +69,7 @@ public class Dao {
 	public List<Ticket> getTickets() {
 		String HQL = "from Ticket";
 		Query query = session.createQuery(HQL);
-		List results = query.list();
+		List<Ticket> results = query.list();
 		
 		return results;
 		
@@ -79,7 +79,7 @@ public class Dao {
 		String HQL = "from Ticket t where t.name = :name";
 		Query query = session.createQuery(HQL);
 		query.setParameter("name", name);
-		List results = query.list();
+		List<Ticket> results = query.list();
 		
 		return results;
 		
